@@ -47,11 +47,11 @@ fun ej4(): Unit{
 fun ej5(): Unit{
     println("introduce un numero para calcular su factorial")
     var num: Int = readLine()!!.toInt();
-    var result: Int = 0
-    (1..num).forEach { item ->
-        result = item * item+1
+    var result: Long = 1
+    for (i in 1..num){
+        result *= i.toLong()
     }
-    println(result)
+    println("El factorial de $num es $result")
 }
 fun esPrimo(numero: Int): Boolean{
     if (numero <= 1){
@@ -69,5 +69,5 @@ fun main(args: Array<String>) {
     //ej2()
     //ej3()
     //ej4()
-    ej5()
+    //ej5()
 }
