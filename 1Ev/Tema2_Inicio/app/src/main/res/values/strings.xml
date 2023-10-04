@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tema2_Inicio</string>
+    <string name="hello_tag">Primera aplicación android</string>
+    <string name="botonPulsar">Pulsar</string>
 </resources>
