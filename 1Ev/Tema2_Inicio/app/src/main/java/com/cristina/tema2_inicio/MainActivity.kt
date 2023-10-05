@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         boton = findViewById(R.id.boton_pulsar)
 
         boton.setOnClickListener{
-            
+
         }
     }
 }
