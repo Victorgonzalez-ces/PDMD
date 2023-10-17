@@ -8,6 +8,7 @@ import android.view.View.OnClickListener
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import com.cristina.t2_estado.R
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 
@@ -65,20 +66,37 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        when (p0!!.id) {
-            R.id.boton_suma -> {
-                Log.v("contador", "pulsado suma")
-                contador = contador!! +1
+        if (contador!! <15){
+            when (p0!!.id) {
+                R.id.boton_suma -> {
+                    Log.v("contador", "pulsado suma")
+                    contador = contador!! +1
+                }
+                R.id.boton_resta -> {
+                    Log.v("contador", "pulsado resta")
+                    contador = contador!! -1
+                }
             }
-            R.id.boton_resta -> {
-                Log.v("contador", "pulsado resta")
-                contador = contador!! -1
-            }
+        }
+        if (!comprobarLimite(p0!!)) {
+            textoContador.setText(contador.toString())
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("contador",contador!!)
+    }
+    fun comprobarLimite(view: View): Boolean{
+        if (contador==15){
+            Snackbar.make(view, "Limite alcanzado",Snackbar.LENGTH_LONG)
+                .setAction("Resetear"){
+                    contador = 0
+                    textoContador.setText(contador!!.toString())
+                }
+                .show()
+            return true
+        }
+        return false
     }
 }
