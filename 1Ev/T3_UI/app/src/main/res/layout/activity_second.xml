@@ -22,11 +22,13 @@
         android:id="@+id/nombre_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="24dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imagen_logout"
         app:layout_constraintEnd_toStartOf="@+id/imagen_logout"
+        app:layout_constraintStart_toEndOf="@+id/boton_add"
         app:layout_constraintTop_toTopOf="@+id/imagen_logout"
+        app:layout_constraintVertical_bias="1.0"
         tools:text="Nombre" />
 
     <Spinner
@@ -66,5 +68,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_modelos" />
+
+    <ImageButton
+        android:id="@+id/boton_add"
+        android:layout_width="54dp"
+        android:layout_height="43dp"
+        android:src="@drawable/audirs6"
+        app:layout_constraintStart_toStartOf="@+id/spinner_marcas"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
