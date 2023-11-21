@@ -30,7 +30,8 @@ class SecondActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListe
     private lateinit var adaptadorMarcas: ArrayAdapter<Marca>
     private lateinit var adaptadorModelos: AdaptadorModelos
     private lateinit var adaptadorRecycler: AdaptadorRecycler
-
+    private var modelo1: Modelo? = null;
+    private var modelo2: Modelo? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,17 +56,17 @@ class SecondActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListe
         listaMarcas.add(Marca("Audi",4,R.drawable.audirs6))
         listaMarcas.add(Marca("Ford",4,R.drawable.fordgt))
 
-        binding.spinnerMarcas.adapter = adaptadorMarcas
+        binding.spinnerMarcas?.adapter = adaptadorMarcas
         adaptadorMarcas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.nombreUsuario.text = usuario?.correo ?: "Invitado"
+        binding.nombreUsuario?.text = usuario?.correo ?: "Invitado"
 
 
         listaModelos.add(Modelo("GT40","Ford",300,100000,"Clasico", R.drawable.fordgt))
         listaModelos.add(Modelo("Mustang","Ford",400,50000,"Deportivo", R.drawable.fordmustang))
-        binding.spinnerModelos.adapter = adaptadorModelos
+        binding.spinnerModelos?.adapter = adaptadorModelos
 
-        binding.recyclerModelos.adapter = adaptadorRecycler
-        binding.recyclerModelos.layoutManager =
+        binding.recyclerModelos?.adapter = adaptadorRecycler
+        binding.recyclerModelos?.layoutManager =
             LinearLayoutManager(applicationContext,
                 LinearLayoutManager.VERTICAL
                 , false)
@@ -75,20 +76,23 @@ class SecondActivity : AppCompatActivity(), OnClickListener, OnItemSelectedListe
     override fun onResume() {
         super.onResume()
         // para acciones
-        binding.imagenLogout.setOnClickListener(this)
-        binding.botonAdd.setOnClickListener(this)
-        binding.spinnerMarcas.onItemSelectedListener = this;
-        binding.spinnerModelos.onItemSelectedListener = this;
+        binding.imagenLogout?.setOnClickListener(this)
+        binding.botonAdd?.setOnClickListener(this)
+        binding.spinnerMarcas?.onItemSelectedListener = this;
+        binding.spinnerModelos?.onItemSelectedListener = this;
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
-            binding.imagenLogout.id ->{
+            binding.imagenLogout?.id ->{
                 finish()
             }
-            binding.botonAdd.id ->{
+            binding.botonAdd?.id ->{
                 // añadir un modelo -> adaptador
-                adaptadorModelos.addModelos(Modelo("E-tron", "Mercedes",400,150000,"Electrico", R.drawable.audietron))
+                lateinit var modeloCaro: Modelo
+                if (modelo1!!.precio > modelo2!!.precio ){
+
+                }
             }
         }
     }

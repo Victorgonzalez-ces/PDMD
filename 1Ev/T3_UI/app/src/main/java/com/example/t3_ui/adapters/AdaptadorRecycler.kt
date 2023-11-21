@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.t3_ui.R
+import com.example.t3_ui.detailActivity
 import com.example.t3_ui.model.Modelo
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,8 +24,8 @@ class AdaptadorRecycler(var lista: ArrayList<Modelo>, var contexto: Context): Re
         var boton: Button
 
         init {
-            imagen = item.findViewById(R.id.imagenModelo)
-            nombre = item.findViewById(R.id.nombreModelo)
+            imagen = item.findViewById(R.id.imagen_modelo)
+            nombre = item.findViewById(R.id.nombre_modelo)
             precio = item.findViewById(R.id.precio_modelo)
             boton = item.findViewById(R.id.boton_registrar)
         }
@@ -47,7 +48,9 @@ class AdaptadorRecycler(var lista: ArrayList<Modelo>, var contexto: Context): Re
         holder.precio.text = item.precio.toString()
         holder.boton.setOnClickListener {
 
-            val intent: Intent = Intent()
+            val intent: Intent = Intent(contexto, detailActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("modelo",item)
             contexto.startActivity(intent)
 
         }
