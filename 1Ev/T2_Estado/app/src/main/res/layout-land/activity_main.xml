@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_parent"
         android:layout_weight="0.33"
         android:layout_height="0dp"
         android:textSize="50sp"
@@ -16,7 +16,7 @@
         android:id="@+id/texto_contador"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
+        android:layout_width="wrap_parent"
         android:layout_weight="0.33"
         android:layout_height="0dp"
         android:textSize="50sp"

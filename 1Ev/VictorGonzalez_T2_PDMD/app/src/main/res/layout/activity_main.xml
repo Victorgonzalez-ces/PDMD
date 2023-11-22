@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/textoPeso"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Introduzca su peso:" />
+
+        <EditText
+            android:id="@+id/textoAltura"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:text="Introduzca su altura:" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/botonHombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hombre"
+        />
+    <Button
+        android:id="@+id/botonMujer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mujer"
+        />
+
+
+    
+
+</androidx.appcompat.widget.LinearLayoutCompat>

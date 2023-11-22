@@ -100,7 +100,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     fun comprobarLimite(view: View): Boolean {
         if (contador == 15) {
-
             Snackbar.make(view, "Limite alcanzado", Snackbar.LENGTH_LONG)
                 .setAction("Resetear") {
                     contador = 0
