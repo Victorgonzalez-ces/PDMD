@@ -9,14 +9,10 @@ import com.example.t3_listproductos.model.Producto
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var adapter: AdaptadorProductos
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var listaProductos: ArrayList<Producto>
+   private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        listaProductos = ArrayList()
-        adapter = AdaptadorProductos(listaProductos,this)
     }
 }
