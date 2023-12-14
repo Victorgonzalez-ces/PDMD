@@ -10,6 +10,9 @@
     <item android:title="Ayuda"
         android:id="@+id/menu_ayuda"
         />
+    <item android:title="nacionalidad"
+        android:id="@+id/menu_nacionalidad"
+        />
     <item android:title="Creditos">
         <menu>
             <item android:title="version"

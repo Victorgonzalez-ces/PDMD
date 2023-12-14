@@ -1,27 +1,26 @@
-package com.example.t3listas_json.ui.dialog.activity
+package com.example.t3listas_json
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request.Method
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.t3_listaapi.adapter.UsuarioAdapter
-import com.example.t3_listajson.databinding.ActivityMainBinding
-import com.example.t3_listajson.model.User
-import com.example.t3listas_json.R
 import com.example.t3listas_json.databinding.ActivityMainBinding
+import com.example.t3listas_json.dialog.GeneroListaDialog
+import com.example.t3listas_json.dialog.GeneroSimpleDialog
+import com.example.t3listas_json.dialog.NacionalidadDialog
 import com.example.t3listas_json.model.User
+import com.example.t3listas_json.ui.dialog.activity.VersionDialog
+import com.google.android.material.snackbar.Snackbar
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity(), OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDialog.onGeneroListaLister,GeneroSimpleDialog.onGeneroSimpleLister,NacionalidadDialog.OnNacionalidadListener {
 
     private lateinit var listaUsuario: ArrayList<User>;
     private lateinit var adaptadoUsuariosAdapter: UsuarioAdapter
@@ -90,8 +89,12 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener {
                 binding.spinnerGenero.setSelection(0)
             }
             R.id.menu_version->{
-                val versionDialog:VersionDialog = VersionDialog()
-                versionDialog.show(supportFragmentManager,"")
+                val versionDialog: VersionDialog = VersionDialog()
+                versionDialog.show(supportFragmentManager," ")
+            }
+            R.id.menu_nacionalidad->{
+                val versionDialog: VersionDialog = VersionDialog()
+                versionDialog.show(supportFragmentManager, null)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -107,5 +110,17 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    override fun onGeneroListaSelected(genero: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGeneroSimpleSelected(genero: String?) {
+        Snackbar.make(binding.root,genero?:"sin seleccion",Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onDialogoNacionalidadSelected(nacionalidades: ArrayList<String>) {
+        Snackbar.make(binding.root,nacionalidades?:"sin selecion",Snackbar.LENGTH_SHORT).show()
     }
 }
