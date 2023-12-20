@@ -7,6 +7,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -15,12 +18,13 @@ import com.example.t3listas_json.databinding.ActivityMainBinding
 import com.example.t3listas_json.dialog.GeneroListaDialog
 import com.example.t3listas_json.dialog.GeneroSimpleDialog
 import com.example.t3listas_json.dialog.NacionalidadDialog
+import com.example.t3listas_json.dialog.PersonalizadoDialog
 import com.example.t3listas_json.model.User
 import com.example.t3listas_json.ui.dialog.activity.VersionDialog
 import com.google.android.material.snackbar.Snackbar
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDialog.onGeneroListaLister,GeneroSimpleDialog.onGeneroSimpleLister,NacionalidadDialog.OnNacionalidadListener {
+class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDialog.onGeneroListaLister,GeneroSimpleDialog.onGeneroSimpleLister,NacionalidadDialog.OnNacionalidadListener,PersonalizadoDialog.onDialogoPersoListener {
 
     private lateinit var listaUsuario: ArrayList<User>;
     private lateinit var adaptadoUsuariosAdapter: UsuarioAdapter
@@ -56,6 +60,8 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDial
     fun getUsers(response: JSONObject): Unit {
         // crear clase modelo User
         // obtener una lista de todos los usuarios del JSON
+        listaUsuario.clear()
+        adaptadoUsuariosAdapter.notifyDataSetChanged()
         val results = response.getJSONArray("results")
         for (i in (0..results.length() - 1)) {
             val user = results.getJSONObject(i);
@@ -93,8 +99,10 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDial
                 versionDialog.show(supportFragmentManager," ")
             }
             R.id.menu_nacionalidad->{
-                val versionDialog: VersionDialog = VersionDialog()
-                versionDialog.show(supportFragmentManager, null)
+                /*val versionDialog: VersionDialog = VersionDialog()
+                versionDialog.show(supportFragmentManager, null)*/
+                val persoDialog: PersonalizadoDialog()
+                persoDialog.show(supportFragmentManager,null)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -122,5 +130,9 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,GeneroListaDial
 
     override fun onDialogoNacionalidadSelected(nacionalidades: ArrayList<String>) {
         Snackbar.make(binding.root,nacionalidades?:"sin selecion",Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onPersonalizadoSelected(genero: String, resultado: Int) {
+        TODO("Not yet implemented")
     }
 }

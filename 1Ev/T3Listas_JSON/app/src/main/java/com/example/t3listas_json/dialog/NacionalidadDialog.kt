@@ -26,7 +26,7 @@ class NacionalidadDialog: DialogFragment() {
             //ejecuto
             val nacionalidad = resources.getStringArray(R.array.nacionalidades)[which]
             if (isChecked){
-                lista
+
             }
         }
         builder.setPositiveButton("Ok"){_,_ ->

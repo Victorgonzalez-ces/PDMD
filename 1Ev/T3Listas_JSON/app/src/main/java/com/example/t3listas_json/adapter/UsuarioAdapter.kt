@@ -2,6 +2,7 @@ package com.example.t3_listaapi.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.location.GnssAntennaInfo.Listener
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +19,10 @@ import com.google.android.material.snackbar.Snackbar
 class UsuarioAdapter(var lista: ArrayList<User>, var contexto: Context) :
     RecyclerView.Adapter<UsuarioAdapter.MyHolder>() {
 
+    private lateinit var listener: Listener
     class MyHolder(item: View) : RecyclerView.ViewHolder(item) {
         var textoDetalle: TextView;
         var imagenDetalle: ImageView;
-
         init {
             textoDetalle = item.findViewById(R.id.texto_fila);
             imagenDetalle = item.findViewById(R.id.imagen_fila);
@@ -47,6 +48,9 @@ class UsuarioAdapter(var lista: ArrayList<User>, var contexto: Context) :
 
         val item = lista[position]
         holder.textoDetalle.text = item.first + " " + item.last
+        holder.textoDetalle.setOnClickListener{
+
+        }
         Glide.with(contexto).load(item.picture).into(holder.imagenDetalle)
     }
 }
