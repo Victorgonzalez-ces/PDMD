@@ -3,6 +3,7 @@ package com.example.fragments
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
 import com.example.fragments.databinding.ActivityMainBinding
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, FragmentUno.onFragmen
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setSupportActionBar(binding.toolbar)
         //binding.sitioFragment
         //supportFragmentManager-> gestion de fragments
         //supportFragmentManager-> fragmentTransaction
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, FragmentUno.onFragmen
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            binding.f1Buton.id->{
+            /*binding.f1Buton.id->{
                 var ft = supportFragmentManager.beginTransaction()
                 ft.replace(binding.sitioFragment.id,FragmentUno(),"f1")
                 ft.addToBackStack("f1")
@@ -50,14 +51,20 @@ class MainActivity : AppCompatActivity(), OnClickListener, FragmentUno.onFragmen
                 ft.replace(binding.sitioFragment.id, FragmentDos(),"f2")
                 ft.addToBackStack("f2")
                 ft.commit()
-            }
+            }*/
         }
     }
 
     override fun onNombreSelected(nombre: String) {
+        supportActionBar!!.title = "Fragment dos"
         var ft = supportFragmentManager.beginTransaction()
         ft.replace(binding.sitioFragment.id, FragmentDos.newInstance(nombre),"f2")
         ft.addToBackStack("f2")
         ft.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
