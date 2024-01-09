@@ -2,31 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/holo_green_light"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_purple"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="20dp"
     >
 
     <TextView
-        android:id="@+id/textFragment1"
+        android:id="@+id/textFragment2"
         android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Introduce tu nombre"
+        android:text="Nombre recepcionado"
         />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="nombre"
-        android:id="@+id/edit_nombre"
-        />
-    <Button
-        android:id="@+id/boton_comunicar"
+    <TextView
+        android:textSize="35sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="comunicar"
+        android:text=""
+        android:id="@+id/texto_nombre"
         />
 </LinearLayout>

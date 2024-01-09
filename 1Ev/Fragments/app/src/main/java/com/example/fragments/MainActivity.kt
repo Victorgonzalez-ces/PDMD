@@ -3,10 +3,13 @@ package com.example.fragments
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnClickListener
 import com.example.fragments.databinding.ActivityMainBinding
+import com.example.fragments.fragment.FragmentDos
 import com.example.fragments.fragment.FragmentUno
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnClickListener, FragmentUno.onFragmentUnoListener {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +30,34 @@ class MainActivity : AppCompatActivity() {
 
         ft = supportFragmentManager.beginTransaction()
         ft.replace(binding.sitioFragment.id,FragmentUno(),"f1")
-        ft.addToBackStack("f2")
+        ft.addToBackStack("f11")
         ft.commit()
 
         //add
         //remove
     }
 
-    override fun onBackPressed() {
-        if (supportFragmentManager.)
-        super.onBackPressed()
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            binding.f1Buton.id->{
+                var ft = supportFragmentManager.beginTransaction()
+                ft.replace(binding.sitioFragment.id,FragmentUno(),"f1")
+                ft.addToBackStack("f1")
+                ft.commit()
+            }
+            binding.f2Buton.id->{
+                var ft = supportFragmentManager.beginTransaction()
+                ft.replace(binding.sitioFragment.id, FragmentDos(),"f2")
+                ft.addToBackStack("f2")
+                ft.commit()
+            }
+        }
+    }
+
+    override fun onNombreSelected(nombre: String) {
+        var ft = supportFragmentManager.beginTransaction()
+        ft.replace(binding.sitioFragment.id, FragmentDos.newInstance(nombre),"f2")
+        ft.addToBackStack("f2")
+        ft.commit()
     }
 }
