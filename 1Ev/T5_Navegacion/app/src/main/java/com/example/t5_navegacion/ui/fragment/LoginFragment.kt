@@ -38,6 +38,9 @@ class LoginFragment : Fragment() {
         binding.botonCrearCuenta.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signinFragment)
         }
+        binding.botonInvitado.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.t5_navegacion.R
 import com.example.t5_navegacion.databinding.FragmentMainBinding
 import com.example.t5_navegacion.databinding.FragmentSigninBinding
 
@@ -31,6 +33,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.botonVolverMain.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+        }
     }
 
     override fun onDestroyView() {
