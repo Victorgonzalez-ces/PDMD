@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toolbar
+import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.t5_navegacion.R
@@ -40,6 +41,9 @@ class AdapterProductos(var context: Context): RecyclerView.Adapter<AdapterProduc
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val item: Producto = listaProductos[position]
         holder.toolbar.title = item.nombre
+        holder.toolbar.inflateMenu(R.menu.menu_toolbar)
+        holder.toolbar.setOnMenuItemClickListener {
+        }
         Glide.with(context).load(item.imagen).into(holder.imagen)
     }
 
@@ -47,4 +51,5 @@ class AdapterProductos(var context: Context): RecyclerView.Adapter<AdapterProduc
         listaProductos.add(item)
         notifyItemInserted(listaProductos.size-1)
     }
+
 }

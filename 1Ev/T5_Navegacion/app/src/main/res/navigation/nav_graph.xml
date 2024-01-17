@@ -29,11 +29,28 @@
         <action
             android:id="@+id/action_signinFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_main"
         android:id="@+id/mainFragment"
         android:name="com.example.t5_navegacion.ui.fragment.MainFragment"
+        android:label="Pantalla principal" >
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detallesFragment"
+            app:destination="@id/detallesFragment" />
+
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_detalles"
+        android:id="@+id/detallesFragment"
+        android:name="com.example.t5_navegacion.ui.fragment.DetallesFragment"
         android:label="Pantalla principal" >
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
