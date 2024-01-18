@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:layout_margin="10dp"
-        android:src="@drawable/PRODUCTO"
+        android:src="@drawable/producto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

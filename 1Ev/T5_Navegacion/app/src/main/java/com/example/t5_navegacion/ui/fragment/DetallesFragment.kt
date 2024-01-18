@@ -14,8 +14,7 @@ import com.example.t5_navegacion.databinding.FragmentDetallesBinding
 import com.example.t5_navegacion.model.Producto
 
 class DetallesFragment: Fragment() {
-    private var _binding: FragmentDetallesBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentDetallesBinding
     private lateinit var adapterProductos: AdapterProductos
 
     override fun onAttach(context: Context) {
@@ -27,7 +26,7 @@ class DetallesFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDetallesBinding.inflate(inflater,container,false)
+        binding = FragmentDetallesBinding.inflate(inflater,container,false)
         return binding.root
     }
 

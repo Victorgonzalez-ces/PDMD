@@ -19,11 +19,11 @@ import com.google.firebase.ktx.Firebase
  */
 class SigninFragment : Fragment() {
 
-    private var _binding: FragmentSigninBinding? = null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth;
 
     override fun onAttach(context: Context) {
@@ -36,7 +36,7 @@ class SigninFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSigninBinding.inflate(inflater, container, false)
+        binding = FragmentSigninBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -65,6 +65,5 @@ class SigninFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 }

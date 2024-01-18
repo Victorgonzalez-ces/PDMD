@@ -25,13 +25,11 @@ import org.json.JSONObject
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class MainFragment : Fragment() {
-
-    private var _binding: FragmentMainBinding? = null
     private lateinit var adapterProductos: AdapterProductos
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentMainBinding
 
 
     override fun onAttach(context: Context) {
@@ -43,7 +41,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -72,6 +70,5 @@ class MainFragment : Fragment() {
     }
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 }

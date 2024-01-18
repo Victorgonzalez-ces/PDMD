@@ -42,8 +42,6 @@ class AdapterProductos(var context: Context): RecyclerView.Adapter<AdapterProduc
         val item: Producto = listaProductos[position]
         holder.toolbar.title = item.nombre
         holder.toolbar.inflateMenu(R.menu.menu_toolbar)
-        holder.toolbar.setOnMenuItemClickListener {
-        }
         Glide.with(context).load(item.imagen).into(holder.imagen)
     }
 
