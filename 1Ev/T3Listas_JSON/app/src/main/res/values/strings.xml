@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">T3.Listas_JSON</string>
+    <string-array name="generos">
+        <item>Male</item>
+        <item>Female</item>
+        <item>All</item>
+    </string-array>
+    <string-array name="nacionalidades">
+        <item>US</item>
+        <item>DK</item>
+        <item>FR</item>
+        <item>GB</item>
+        <item>ES</item>
+    </string-array>
+</resources>

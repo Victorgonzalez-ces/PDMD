@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Resetear"
+        android:id="@+id/menu_reset"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_dialog_info"
+        />
+    <item android:title="Ayuda"
+        android:id="@+id/menu_ayuda"
+        />
+    <item android:title="nacionalidad"
+        android:id="@+id/menu_nacionalidad"
+        />
+    <item android:title="Creditos">
+        <menu>
+            <item android:title="version"
+                android:id="@+id/menu_version"
+                />
+        </menu>
+
+    </item>
+</menu>

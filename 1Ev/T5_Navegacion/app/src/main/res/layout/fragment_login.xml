@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="50dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_marginTop="140px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_marginTop="100px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="introduzca nombre de usuario"/>
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_marginTop="100px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="introduzca contraseña de usuario"/>
+
+        <Button
+            android:id="@+id/botonInicio"
+            android:layout_marginTop="100px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INICIO"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:id="@+id/botonCrearCuenta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="crear cuenta" />
+
+            <Button
+                android:id="@+id/botonInvitado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Acceder invitado" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
