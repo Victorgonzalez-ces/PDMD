@@ -32,11 +32,10 @@
 
             <ImageButton
                 android:id="@+id/botonMenos"
-                android:src="@drawable/down"
                 android:layout_width="90dp"
                 android:layout_height="82dp"
                 android:layout_gravity="bottom|center"
-                />
+                android:src="@drawable/down"/>
 
         </FrameLayout>
 
