@@ -19,6 +19,9 @@ import com.example.t5_navegacion.adapter.AdapterProductos
 import com.example.t5_navegacion.databinding.FragmentMainBinding
 import com.example.t5_navegacion.databinding.FragmentSigninBinding
 import com.example.t5_navegacion.model.Producto
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 
 /**
@@ -30,11 +33,12 @@ class MainFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private lateinit var binding: FragmentMainBinding
-
+    private lateinit var database: FirebaseDatabase
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         adapterProductos = AdapterProductos(context)
+        database = FirebaseDatabase.getInstance("https://vgp-ces-default-rtdb.europe-west1.firebasedatabase.app/")
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +57,9 @@ class MainFragment : Fragment() {
         binding.recyclerProductos.adapter = adapterProductos
         binding.recyclerProductos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         getAllProducts()
+        database.getReference("nombre").setValue("Victor")
+        database.getReference("nombre").setValue("Vero")
+        database.getReference("nombre").setValue("Nico")
 
     }
 

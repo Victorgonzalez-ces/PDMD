@@ -12,6 +12,7 @@ import com.example.t5_navegacion.databinding.FragmentSigninBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 /**
@@ -25,10 +26,12 @@ class SigninFragment : Fragment() {
     // onDestroyView.
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth;
+    private lateinit var database: FirebaseDatabase
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         auth = Firebase.auth
+        database = FirebaseDatabase.getInstance("https://vgp-ces-default-rtdb.europe-west1.firebasedatabase.app/")
     }
 
     override fun onCreateView(
@@ -49,6 +52,11 @@ class SigninFragment : Fragment() {
                     .addOnCompleteListener{
                         if (it.isSuccessful){
                             Snackbar.make(binding.root,"Cuenta creada con exito",Snackbar.LENGTH_SHORT).show()
+                            val referencia = database.getReference("usuarios").child(auth.currentUser!!.uid)
+                            referencia.child("nombre").setValue(binding.editNombreSignin.text.toString())
+                            referencia.child("apellido").setValue(binding.editApellidoSignin.text.toString())
+                            referencia.child("correo").setValue(binding.editCorreoSignin.text.toString())
+                            referencia.child("direccion").setValue(binding.editDireccionSignin.text.toString())
                         }else{
                             Snackbar.make(binding.root,"Fallo en la creación del usuario.",Snackbar.LENGTH_SHORT).show()
                         }
