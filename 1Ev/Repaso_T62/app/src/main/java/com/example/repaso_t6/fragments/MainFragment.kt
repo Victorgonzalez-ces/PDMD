@@ -14,6 +14,9 @@ import com.example.repaso_t6.adapters.AdapterProductos
 import com.example.repaso_t6.databinding.FragmentMainBinding
 import com.example.repaso_t6.model.Producto
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -24,10 +27,10 @@ class MainFragment : Fragment() {
     // onDestroyView.
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapterProductos: AdapterProductos
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        adapterProductos = AdapterProductos(context)
+        val uid = arguments?.getString("uid")
+        adapterProductos = AdapterProductos(context,uid)
 
     }
     override fun onCreateView(
@@ -54,6 +57,7 @@ class MainFragment : Fragment() {
             for (i in 0 until products.length()){
                 val item = products.getJSONObject(i)
                 val itemProducto = Producto(
+                    item.getInt("id"),
                     item.getString("title"),
                     item.getDouble("price"),
                     item.getString("description"),

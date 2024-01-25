@@ -13,11 +13,11 @@
         android:orientation="vertical"
         >
         <android.widget.Toolbar
-            app:titleTextColor="@color/white"
+            app:titleTextColor="@color/black"
             android:id="@+id/toolbar_carta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/green"
             />
 
         <ImageView

@@ -72,8 +72,9 @@ class SigninFragment : Fragment() {
                         binding.editNombreSigin.setText("")
                         binding.editCorreoSigin.setText("")
                         binding.editPassSigin.setText("")
+                        val bundle = Bundle()
+                        bundle.getBundle(auth.uid)
                         findNavController().navigate(R.id.action_signinFragment_to_mainFragment)
-
                     }else{
                         Snackbar.make(binding.root,"Fallo al iniciar Sesión", Snackbar.LENGTH_SHORT).show()
                     }

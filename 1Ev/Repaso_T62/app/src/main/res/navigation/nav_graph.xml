@@ -23,5 +23,8 @@
         <action
             android:id="@+id/action_mainFragment_to_signinFragment"
             app:destination="@id/signinFragment" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
     </fragment>
 </navigation>
