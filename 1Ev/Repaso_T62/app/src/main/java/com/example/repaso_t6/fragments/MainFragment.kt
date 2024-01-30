@@ -2,6 +2,7 @@ package com.example.repaso_t6.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,10 @@ import com.example.repaso_t6.model.Producto
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 /**
@@ -27,11 +32,14 @@ class MainFragment : Fragment() {
     // onDestroyView.
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapterProductos: AdapterProductos
+    private lateinit var database: FirebaseDatabase
+    val uid = arguments?.getString("uid")
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val uid = arguments?.getString("uid")
+        val uid = arguments?.getString("uid")?: ""
         adapterProductos = AdapterProductos(context,uid)
-
+        database = FirebaseDatabase.getInstance("https://vgp-ces-default-rtdb.europe-west1.firebasedatabase.app/")
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +56,27 @@ class MainFragment : Fragment() {
         binding.textoUsuario.text = arguments?.getString("nombre")
         binding.recyclerProductos.adapter = adapterProductos
         binding.recyclerProductos.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        getAllproducts()
+        //getAllproducts()
+        binding.botonEscuchar.setOnClickListener {
+            val reference = database.getReference("datos").child("products")
+            reference.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val hijos = snapshot.children
+                    hijos.forEach{
+                        val producto = it.getValue(Producto::class.java)
+                        adapterProductos.addProducto(producto!!)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
+        }
     }
 
-    private fun getAllproducts(){
+    /*private fun getAllproducts(){
         val peticion:JsonObjectRequest = JsonObjectRequest("https://dummyjson.com/products",{
             val products = it.getJSONArray("products")
             for (i in 0 until products.length()){
@@ -68,7 +93,7 @@ class MainFragment : Fragment() {
             }
         },{})
         Volley.newRequestQueue(context).add(peticion)
-    }
+    }*/
     override fun onDestroyView() {
         super.onDestroyView()
     }
