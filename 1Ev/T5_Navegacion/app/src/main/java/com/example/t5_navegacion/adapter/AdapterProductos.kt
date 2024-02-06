@@ -14,7 +14,7 @@ import com.example.t5_navegacion.model.Producto
 
 class AdapterProductos(var context: Context): RecyclerView.Adapter<AdapterProductos.MyHolder>(){
 
-    private lateinit var listaProductos: ArrayList<Producto>
+    private lateinit var listaProductos: ArrayList<Producto?>
 
     init {
         listaProductos = ArrayList()
@@ -39,15 +39,18 @@ class AdapterProductos(var context: Context): RecyclerView.Adapter<AdapterProduc
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val item: Producto = listaProductos[position]
-        holder.toolbar.title = item.nombre
+        val item: Producto? = listaProductos[position]
+        holder.toolbar.title = item?.title
         holder.toolbar.inflateMenu(R.menu.menu_toolbar)
-        Glide.with(context).load(item.imagen).into(holder.imagen)
+        Glide.with(context).load(item?.thumbnail).into(holder.imagen)
     }
 
-    fun addProducto(item: Producto){
+    fun addProducto(item: Producto?){
         listaProductos.add(item)
         notifyItemInserted(listaProductos.size-1)
+    }
+    fun clearList(){
+        listaProductos.clear()
     }
 
 }
